@@ -26,5 +26,5 @@ STN_gabriela/
 # Utility script for the readme.md figure
 export_svg.py
 
-# Notebooks folder
+# notebooks folder
 notebooks/
