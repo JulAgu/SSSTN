@@ -1,0 +1,27 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# results directories (symbolic links in our case)
+results
+results_sr
+results_xgb
+
+# viz directory
+viz/
+
+# Chest with legacy code
+chest/
+
+# original EuroGP STNs code from Gabriela
+STN_gabriela/
+
+# Utility script for the readme.md figure
+export_svg.py
