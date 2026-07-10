@@ -19,11 +19,8 @@ class MLP(nn.Module):
     n_layers: int
         Number of layers
     """
-    def __init__(self,
-                 in_dim: int,
-                 out_dim: int,
-                 hidden: int = 128,
-                 n_layers: int = 2):
+
+    def __init__(self, in_dim: int, out_dim: int, hidden: int = 128, n_layers: int = 2):
         super().__init__()
         layers = [[nn.Linear(in_dim, hidden), nn.ReLU()]]
         layers.extend(

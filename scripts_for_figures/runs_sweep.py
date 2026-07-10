@@ -113,7 +113,9 @@ def main() -> None:
     )
 
     nrows, ncols = len(TASKS), len(RUN_COUNTS)
-    fig, axes = plt.subplots(nrows, ncols, figsize=(4.0 * ncols, 3.5 * nrows), squeeze=False)
+    fig, axes = plt.subplots(
+        nrows, ncols, figsize=(4.0 * ncols, 3.5 * nrows), squeeze=False
+    )
 
     for r, (row_label, base, location, stem) in enumerate(TASKS):
         for c, n_runs in enumerate(RUN_COUNTS):

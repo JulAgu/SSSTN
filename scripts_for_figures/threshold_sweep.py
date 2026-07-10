@@ -95,7 +95,9 @@ def main() -> None:
     )
 
     nrows, ncols = len(TASKS), len(THRESHOLDS)
-    fig, axes = plt.subplots(nrows, ncols, figsize=(4.0 * ncols, 3.5 * nrows), squeeze=False)
+    fig, axes = plt.subplots(
+        nrows, ncols, figsize=(4.0 * ncols, 3.5 * nrows), squeeze=False
+    )
 
     for r, (row_label, location, stem) in enumerate(TASKS):
         for c, tau in enumerate(THRESHOLDS):

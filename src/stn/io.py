@@ -143,9 +143,7 @@ def load_condition(
     return descriptors, df, n_classes
 
 
-def save_edgelist(
-    stn: "STN", path: str | Path, *, weight: bool = True
-) -> None:
+def save_edgelist(stn: "STN", path: str | Path, *, weight: bool = True) -> None:
     """
     Write the STN graph as an edge-list CSV (one directed ``From,To`` per line).
 

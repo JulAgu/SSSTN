@@ -70,7 +70,11 @@ def label_measures(stn: STN) -> dict:
 
     # Best and End are the same end-of-optimization class -> collapse to "Terminal".
     role_c = {
-        v: ("Terminal" if Gx.nodes[v]["role"] in ("End", "Best") else Gx.nodes[v]["role"])
+        v: (
+            "Terminal"
+            if Gx.nodes[v]["role"] in ("End", "Best")
+            else Gx.nodes[v]["role"]
+        )
         for v in nodes
     }
     nx.set_node_attributes(Gx, role_c, "role_c")
@@ -90,8 +94,11 @@ def label_measures(stn: STN) -> dict:
     out["moran_I"] = _morans_i(x, A) if var > 0 else np.nan
     out["geary_C"] = _gearys_c(x, A) if var > 0 else np.nan
     # Dirichlet energy = sum over undirected edges of squared accuracy difference.
-    de = float(sum((Gx.nodes[u]["Fitness"] - Gx.nodes[v]["Fitness"]) ** 2
-                   for u, v in U.edges()))
+    de = float(
+        sum(
+            (Gx.nodes[u]["Fitness"] - Gx.nodes[v]["Fitness"]) ** 2 for u, v in U.edges()
+        )
+    )
     out["dirichlet_energy"] = de
     m_u = U.number_of_edges()
     out["dirichlet_energy_norm"] = de / (m_u * var) if m_u and var > 0 else np.nan
@@ -132,7 +139,11 @@ def label_measures(stn: STN) -> dict:
 
     # --- edge-type mix ---------------------------------------------------------
     types = pd.Series(G.es["Type"]) if G.ecount() else pd.Series(dtype=object)
-    frac = types.value_counts(normalize=True) if not types.empty else pd.Series(dtype=float)
+    frac = (
+        types.value_counts(normalize=True)
+        if not types.empty
+        else pd.Series(dtype=float)
+    )
     out["frac_improving"] = float(frac.get("Improving", 0.0))
     out["frac_worsening"] = float(frac.get("Worsening", 0.0))
     out["frac_equal"] = float(frac.get("Equal", 0.0))

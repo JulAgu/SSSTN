@@ -31,9 +31,7 @@ TASK_LOCATION = "hamming"
 TASK_STEM = "mnist_784"
 
 
-def cell_path(pct: int,
-              location: str,
-              stem: str) -> Path:
+def cell_path(pct: int, location: str, stem: str) -> Path:
     """
     Helper function for building real and fully destroyed information trains
     STN path for one (corruption, task) cell.
@@ -123,9 +121,7 @@ def main() -> None:
 
     nrows, ncols = GRID
     fig_h = 3.3 * nrows
-    fig, axes = plt.subplots(
-        nrows, ncols, figsize=(4.0 * ncols, fig_h), squeeze=False
-    )
+    fig, axes = plt.subplots(nrows, ncols, figsize=(4.0 * ncols, fig_h), squeeze=False)
     flat_axes = axes.ravel()
 
     for idx, ax in enumerate(flat_axes):

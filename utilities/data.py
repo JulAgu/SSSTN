@@ -90,7 +90,9 @@ def select_tasks(
     if datasets is not None:
         missing = sorted(set(datasets) - set(selected["name"]))
         if missing:
-            print(f"WARNING: requested datasets not in continuous-only {label}: {missing}")
+            print(
+                f"WARNING: requested datasets not in continuous-only {label}: {missing}"
+            )
         selected = selected.loc[selected["name"].isin(datasets)]
         if verbose:
             print(f"Selected {len(selected)} dataset(s): {sorted(selected['name'])}")

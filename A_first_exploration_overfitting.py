@@ -4,7 +4,12 @@ import pickle
 import numpy as np
 import torch
 from engine.trainer import train_mlp
-from utilities.data import add_datasets_arg, load_xy, prepare_classification, select_tasks
+from utilities.data import (
+    add_datasets_arg,
+    load_xy,
+    prepare_classification,
+    select_tasks,
+)
 from tqdm import tqdm
 
 np.random.seed(42)
@@ -99,7 +104,7 @@ if __name__ == "__main__":
                 "model": model.cpu().state_dict(),
                 "trace": trace,
             }
-            
+
             with open(out_path, "wb") as f:
                 pickle.dump(payload, f)
             n_done += 1

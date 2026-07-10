@@ -94,7 +94,9 @@ def nx_measures(stn: STN) -> dict:
     out["max_degree"] = float(degs.max()) if degs.size else np.nan
     out["std_degree"] = float(degs.std()) if degs.size else np.nan
     out["mean_in_degree"] = _try(lambda: float(np.mean([d for _, d in G.in_degree()])))
-    out["mean_out_degree"] = _try(lambda: float(np.mean([d for _, d in G.out_degree()])))
+    out["mean_out_degree"] = _try(
+        lambda: float(np.mean([d for _, d in G.out_degree()]))
+    )
 
     # --- components & connectivity ---------------------------------------------
     out["n_weakly_conn"] = _try(lambda: nx.number_weakly_connected_components(G))
@@ -133,16 +135,28 @@ def nx_measures(stn: STN) -> dict:
     # --- node centralities, aggregated to mean & max ---------------------------
     _agg(out, "deg_centrality", _try(lambda: nx.degree_centrality(G), default={}))
     _agg(out, "in_deg_centrality", _try(lambda: nx.in_degree_centrality(G), default={}))
-    _agg(out, "out_deg_centrality", _try(lambda: nx.out_degree_centrality(G), default={}))
-    _agg(out, "betweenness", _try(lambda: nx.betweenness_centrality(G, weight=None), default={}))
+    _agg(
+        out, "out_deg_centrality", _try(lambda: nx.out_degree_centrality(G), default={})
+    )
+    _agg(
+        out,
+        "betweenness",
+        _try(lambda: nx.betweenness_centrality(G, weight=None), default={}),
+    )
     _agg(out, "closeness", _try(lambda: nx.closeness_centrality(G), default={}))
     _agg(out, "pagerank", _try(lambda: nx.pagerank(G), default={}))
     # eigenvector centrality is ill-defined on a directed graph with sinks; use the
     # undirected graph (the standard, well-posed choice).
-    _agg(out, "eigenvector", _try(lambda: nx.eigenvector_centrality_numpy(U), default={}))
+    _agg(
+        out, "eigenvector", _try(lambda: nx.eigenvector_centrality_numpy(U), default={})
+    )
     _agg(out, "harmonic", _try(lambda: nx.harmonic_centrality(G), default={}))
     _agg(out, "clustering", _try(lambda: nx.clustering(U), default={}))
-    _agg(out, "avg_neighbor_degree", _try(lambda: nx.average_neighbor_degree(G), default={}))
+    _agg(
+        out,
+        "avg_neighbor_degree",
+        _try(lambda: nx.average_neighbor_degree(G), default={}),
+    )
     return out
 
 
@@ -204,9 +218,9 @@ def paired_study(
         )
     res = pd.DataFrame(rows)
     res["abs_dz"] = res["effect_dz"].abs()
-    res = res.sort_values(
-        ["sign_consistency", "abs_dz"], ascending=False
-    ).drop(columns="abs_dz")
+    res = res.sort_values(["sign_consistency", "abs_dz"], ascending=False).drop(
+        columns="abs_dz"
+    )
     return res.reset_index(drop=True)
 
 

@@ -4,7 +4,12 @@ import pickle
 import numpy as np
 import torch
 from engine.trainer import train_mlp
-from utilities.data import add_datasets_arg, load_xy, prepare_classification, select_tasks
+from utilities.data import (
+    add_datasets_arg,
+    load_xy,
+    prepare_classification,
+    select_tasks,
+)
 from tqdm import tqdm
 
 BASE_SEED = 42

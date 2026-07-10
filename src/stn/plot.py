@@ -29,7 +29,7 @@ ROLE_STYLE = {
 EDGE_TYPE_COLOR = {
     "Improving": "#1a9850",  # moves to better fitness
     "Worsening": "#d73027",  # moves to worse fitness
-    "Equal": "0.45",         # neutral move
+    "Equal": "0.45",  # neutral move
 }
 NSIZE_RANGE = (15, 220)  # marker area range (pt^2)
 EWIDTH_RANGE = (0.3, 2.0)

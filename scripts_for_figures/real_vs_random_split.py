@@ -139,7 +139,9 @@ def main() -> None:
         }
     )
 
-    make_pave(CLASSIFICATION, FIG_DIR / f"real_vs_random_classification_{LAYOUT}_2_4.pdf")
+    make_pave(
+        CLASSIFICATION, FIG_DIR / f"real_vs_random_classification_{LAYOUT}_2_4.pdf"
+    )
     make_pave(REGRESSION, FIG_DIR / f"real_vs_random_regression_{LAYOUT}_2_3.pdf")
 
 

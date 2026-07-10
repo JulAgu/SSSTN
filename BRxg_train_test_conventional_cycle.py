@@ -78,7 +78,9 @@ if __name__ == "__main__":
                 final_train_mse = float(np.mean((preds_tr - y_tr_s) ** 2))
                 final_test_mse = float(np.mean((preds_te - y_te_s) ** 2))
 
-                print(f"init_{i} | seed={seed} | train_mse={final_train_mse:.4f} | test_mse={final_test_mse:.4f}")
+                print(
+                    f"init_{i} | seed={seed} | train_mse={final_train_mse:.4f} | test_mse={final_test_mse:.4f}"
+                )
 
                 payload = {
                     "name": dataset_name,

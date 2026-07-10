@@ -145,8 +145,12 @@ def summarize_folder(
         key = (dataset, label_type)
         acc = grouped.setdefault(
             key,
-            {"task": exp.get("task", "classification"), "metric": metric,
-             "train": [], "test": []},
+            {
+                "task": exp.get("task", "classification"),
+                "metric": metric,
+                "train": [],
+                "test": [],
+            },
         )
         acc["train"].append(train_s)
         acc["test"].append(test_s)

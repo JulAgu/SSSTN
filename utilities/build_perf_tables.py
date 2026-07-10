@@ -57,7 +57,7 @@ def metric(payload: dict, task: str) -> tuple[float, float]:
     if task == "regression":
         return (
             1.0 - payload["final_train_mse"],  # train R^2 (== trace['r2'][-1])
-            1.0 - payload["final_test_mse"],   # test  R^2 (normalized MSE)
+            1.0 - payload["final_test_mse"],  # test  R^2 (normalized MSE)
         )
     return payload["final_train_acc"], payload["final_test_acc"]
 
@@ -101,9 +101,12 @@ def collect(directory: Path, task: str) -> pd.DataFrame:
 
     cols = [
         "dataset",
-        "real_train", "real_test",
-        "shuffled_train", "shuffled_test",
-        "n_real", "n_shuffled",
+        "real_train",
+        "real_test",
+        "shuffled_train",
+        "shuffled_test",
+        "n_real",
+        "n_shuffled",
     ]
     return pd.DataFrame(rows)[cols]
 
